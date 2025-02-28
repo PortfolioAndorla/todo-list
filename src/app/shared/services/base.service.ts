@@ -9,7 +9,8 @@ import { catchError, Observable, retry, throwError } from "rxjs";
 })
 export class BaseService<T> {
 
-  basePath: string = `${environment.serverBasePath}`;
+  //basePath: string = `${environment.serverBasePath}`;
+  basePath: string = "https://todo-app1-gwgpapbaakbndjc7.canadacentral-01.azurewebsites.net/api/v1";
   resourceEndpoint: string = '/resources';
 
   httpOptions = {
