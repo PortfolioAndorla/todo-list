@@ -1,0 +1,49 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-full h-auto flex flex-column justify-content-center align-content-center align-items-center gap-3 p-3">
+  @for(field of formFields; track field.name){
+    <div class="w-full">
+      <!-- Input de texto, num o email -->
+      @if (field.type === 'number' || field.type === 'text' || field.type === 'email') {
+        <p-iftalabel>
+          <label [for]="field.name">{{ field.label }}</label>
+          <input
+            pInputText
+            [type]="field.type"
+            [id]="field.name"
+            [formControlName]="field.name"
+            class="w-full"
+          />
+          </p-iftalabel>
+      }
+
+      <!-- select -->
+      @if(field.type === 'select') {
+        <p-floatlabel>
+          <p-select
+            [id]="field.name"
+            [formControlName]="field.name"
+            [options]="field.options"
+            optionLabel="label"
+            [placeholder]="field.label"
+          />
+          </p-floatlabel>
+      }
+
+      <!-- textarea -->
+      @if(field.type === 'textarea') {
+        <p-iftalabel>
+          <label [for]="field.name">{{ field.label }}</label>
+          <textarea
+            pTextarea
+            [id]="field.name"
+            [formControlName]="field.name"
+            rows="5"
+            cols="30"
+            style="resize: none"
+            class="w-full"
+          ></textarea>
+          </p-iftalabel>
+      }
+    </div>
+  }
+  <p-button icon="pi pi-check-circle" aria-label="Save" label="Save" type="submit" [disabled]="form.invalid" class="w-full md:w-auto"></p-button>
+</form>
