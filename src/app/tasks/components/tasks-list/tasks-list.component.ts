@@ -113,7 +113,7 @@ export class TasksListComponent implements OnInit {
 
   onCheckboxChange(task: TaskWithState): void {
     task.completed = !task.completed;
-    task.status = task.completed ? 'Done' : 'To-do';
+    task.status = task.completed ? 'DONE' : 'TODO';
     this.taskService.update(task.id, task).subscribe({
       next: (updatedTask) => {
         const index = this.taskData.findIndex((t) => t.id === updatedTask.id);

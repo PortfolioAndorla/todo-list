@@ -36,9 +36,9 @@ export class TaskFormComponent {
       label: 'Status',
       type: 'select',
       options: [
-        { value: 'Todo', label: 'To Do' },
-        { value: 'In-proccess', label: 'In Proccess' },
-        { value: 'Done', label: 'Done' },
+        { value: 'TODO', label: 'TODO' },
+        { value: 'IN_PROGRESS', label: 'IN_PROGRESS' },
+        { value: 'DONE', label: 'DONE' },
       ],
     },
     {
@@ -46,9 +46,9 @@ export class TaskFormComponent {
       label: 'Priority',
       type: 'select',
       options: [
-        { value: 'high', label: 'High' },
-        { value: 'mid', label: 'Mid' },
-        { value: 'low', label: 'Low' },
+        { value: 'LOW', label: 'LOW' },
+        { value: 'MEDIUM', label: 'MEDIUM' },
+        { value: 'HIGH', label: 'HIGH' },
       ],
     },
   ];
