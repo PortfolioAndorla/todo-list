@@ -1,0 +1,14 @@
+<div class="flex card w-12">
+  <p-toolbar>
+    <ng-template #start>
+      <p-checkbox [binary]="true" (onChange)="onCheckboxChange()"/>
+    </ng-template>
+    <ng-template #center>
+      <h2 class="px-4">TASKS LIST</h2>
+    </ng-template>
+    <ng-template #end class="">
+      <p-button icon="pi pi-plus" aria-label="add" (onClick)="formDialog()" class="px-1"></p-button>
+      <p-button icon="pi pi-trash" aria-label="delete" class="px-2"  (onClick)="deleteTasks()"></p-button>
+    </ng-template>
+  </p-toolbar>
+</div>

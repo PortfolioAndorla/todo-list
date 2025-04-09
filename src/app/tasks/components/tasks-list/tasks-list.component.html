@@ -1,0 +1,54 @@
+<div class="flex flex-column justify-content-start align-items-center w-screen  min-h-screen h-auto py-4 gap-2">
+  <!-- toolbar -->
+  <app-menubar (openFormDialog)="onAddingTask()" (checkAll)="onCheckAll($event)" (deleteAllTasks)="deleteCompletedTasks()"></app-menubar>
+
+  <!-- lista de tareas -->
+  @for (task of taskData; track task.id) {
+
+    <div class="card flex justify-content-center align-items-center flex-row  w-6 min-w-min gap-2 h-auto  px-2 ">
+
+    @if(!task.isViewing) {
+        <p-checkbox
+          [binary]="true"
+          (onChange)="onCheckboxChange(task)"
+        />
+        <h3>{{ task.title }}</h3>
+        <p-message size="small" severity="secondary"  icon="pi pi-clipboard" >{{task.status}}</p-message>
+        <p-message size="small" severity="info"  icon="pi pi-exclamation-circle">{{task.priority}}</p-message>
+
+        <p-button icon=" pi pi-eye" (onClick)="onViewTask(task)"></p-button>
+        <p-button icon=" pi pi-pencil" (onClick)="onEditTask(task)"></p-button>
+        <p-button icon=" pi pi-trash" (onClick)="deleteTask(task)" ></p-button>
+
+    } @else {
+        <p-card  class="w-4" >
+
+        <ng-template #title> {{ task.title}}</ng-template>
+
+      <div class="flex flex-row justify-content-around">
+        <p-message size="small" severity="contrast"  icon="pi pi-clipboard">{{task.status}}</p-message>
+        <p-message size="small" severity="secondary"  icon="pi pi-exclamation-circle">{{task.priority}}</p-message>
+      </div>
+          <p class="h-auto  white-space-normal overflow-auto max-h-30rem">
+            {{task.description}}
+          </p>
+          <ng-template #footer>
+            <div class="flex gap-4 mt-1">
+              <p-button label="Close" class="w-full" styleClass="w-full" (onClick)="onViewTask(task)"  />
+            </div>
+          </ng-template>
+        </p-card>
+     }
+     </div>
+
+   }
+
+   <!-- form add / edit task -->
+  @if (onEdit) {
+    <app-task-form
+      [task]="currentTask"
+      (taskAdded)="onTaskAdded($event)"
+      > </app-task-form>
+  }
+
+</div>
